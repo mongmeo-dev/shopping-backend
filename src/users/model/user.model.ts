@@ -8,23 +8,23 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field()
+  @Field(() => String)
   @Column('varchar', { length: 100, unique: true })
   email: string;
 
-  @Field()
+  @Field(() => String)
   @Column('char', { length: 60 })
   password: string;
 
-  @Field()
+  @Field(() => String)
   @Column('varchar', { length: 10 })
   name: string;
 
-  @Field()
+  @Field(() => String)
   @Column('varchar', { length: 15, unique: true })
   phone: string;
 
-  @Field({ nullable: true })
-  @Column({ default: false })
+  @Field(() => Boolean)
+  @Column({ name: 'is_admin', default: false })
   isAdmin: boolean;
 }
