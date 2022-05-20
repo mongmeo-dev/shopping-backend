@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './models/user.model';
+import { User } from './model/user.model';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { CreateUserInput } from '../auth/dto/create-user.input';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Injectable()
 export class UsersService {
