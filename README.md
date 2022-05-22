@@ -2,7 +2,7 @@
 
 ## 개요
 
-> 간단한 쇼핑몰용 API
+> 간단한 쇼핑몰용 API with GraphQL
 
 ### Language / Framework
 
@@ -16,4 +16,4 @@
 
 ### ERD
 
-- https://dbdiagram.io/d/628710dd7f945876b6556033
+- [ERD](https://dbdiagram.io/d/628710dd7f945876b6556033)
