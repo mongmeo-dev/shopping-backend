@@ -12,13 +12,16 @@ export class UsersService {
 
   async join(createUserData: CreateUserInput): Promise<User> {
     const { email, password, phone } = createUserData;
-    await this.checkOverlap(email, phone);
+    const normalizedPhoneNumber = this.normalizePhoneNumber(phone);
+
+    await this.checkOverlap(email, normalizedPhoneNumber);
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const newUser = this.usersRepository.create({
       ...createUserData,
       password: hashedPassword,
+      phone: normalizedPhoneNumber,
     });
     return await this.usersRepository.save(newUser);
   }
@@ -72,5 +75,12 @@ export class UsersService {
     if (isExist) {
       throw new BadRequestException('이 전화번호는 이미 사용중입니다.');
     }
+  }
+
+  private normalizePhoneNumber(phone: string): string {
+    if (phone.includes('-')) {
+      return phone.replace('-', '');
+    }
+    return phone;
   }
 }
